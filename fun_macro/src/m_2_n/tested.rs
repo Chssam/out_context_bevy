@@ -14,7 +14,11 @@ mod tests {
 	use crate::*;
 
 	// Many to Many Micro used
-	m2n!(ModNotif, ModGetNotif);
+	relation_many! {
+		pub struct ModNotif(EntityHashSet);
+
+		pub struct ModGetNotif(EntityHashSet);
+	}
 
 	mod total {
 		use super::*;
@@ -29,7 +33,7 @@ mod tests {
 			app.run();
 		}
 
-		fn setup<T: OutputEntity, U: OutputEntity>(world: &mut World) {
+		fn setup<T: Many2Many, U: Many2Many>(world: &mut World) {
 			let modder_0 = world.spawn_empty().id();
 			let modder_1 = world.spawn_empty().id();
 			let modder_2 = world.spawn_empty().id();
@@ -98,7 +102,7 @@ mod tests {
 		fn setup(world: &mut World) {
 			let modder = world.spawn_empty().id();
 			let get_mod = world.spawn_empty().id();
-			world.commands().entity(modder).add_mod::<ModNotif>(get_mod);
+			world.commands().entity(modder).add_mod::<ModGetNotif>(get_mod);
 		}
 
 		fn check(one_mod: Single<(Entity, &ModNotif)>, one_get_mod: Single<(Entity, &ModGetNotif)>, mut cmd: Commands) {
@@ -110,7 +114,7 @@ mod tests {
 			assert!(mod_has_get);
 			assert!(get_has_mod);
 
-			cmd.entity(one_get_mod.0).remove_mod::<ModGetNotif>(one_mod.0);
+			cmd.entity(one_get_mod.0).remove_mod::<ModNotif>(one_mod.0);
 		}
 
 		fn check_empty(one_mod: Query<&ModNotif>, one_get_mod: Query<&ModGetNotif>) {
