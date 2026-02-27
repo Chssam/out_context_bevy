@@ -1,0 +1,61 @@
+[
+    {
+        "enumed": "Yes",
+        "hashed": {
+            5: 5,
+            10: 8,
+        },
+        "have": Some({
+            0: 10.5621,
+        }),
+        "multiple": Some({
+            0: {
+                0: 959,
+                1: 95.5,
+                2: Some({
+                    0: "nopenope",
+                }),
+            },
+        }),
+        "name": "MyName",
+        "no_more": None,
+        "sadess": -125,
+        "structed": {
+            "array": [
+                5,
+                6,
+                7,
+                8,
+                9,
+            ],
+            "deep": Some({
+                0: {
+                    0: {
+                        "one": 0,
+                        "two": 0,
+                    },
+                    1: 8.55,
+                    2: {
+                        "one": 0,
+                        "two": 0,
+                    },
+                },
+            }),
+            "floaty": 10.5,
+            "inted": 5,
+            "tuple": {
+                0: 5,
+                1: 6,
+                2: 7.5,
+                3: 8,
+                4: "Epic Asia",
+            },
+        },
+        "two": {
+            0: 5,
+            1: 6,
+            2: 5.7,
+        },
+        "value": 105,
+    },
+]

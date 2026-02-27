@@ -1,0 +1,377 @@
+Seq(
+    [
+        Map(
+            Map(
+                {
+                    String(
+                        "enumed",
+                    ): String(
+                        "Yes",
+                    ),
+                    String(
+                        "hashed",
+                    ): Map(
+                        Map(
+                            {
+                                Number(
+                                    U8(
+                                        5,
+                                    ),
+                                ): Number(
+                                    U8(
+                                        5,
+                                    ),
+                                ),
+                                Number(
+                                    U8(
+                                        10,
+                                    ),
+                                ): Number(
+                                    U8(
+                                        8,
+                                    ),
+                                ),
+                            },
+                        ),
+                    ),
+                    String(
+                        "have",
+                    ): Option(
+                        Some(
+                            Map(
+                                Map(
+                                    {
+                                        Number(
+                                            U8(
+                                                0,
+                                            ),
+                                        ): Number(
+                                            F64(
+                                                F64(
+                                                    10.5621,
+                                                ),
+                                            ),
+                                        ),
+                                    },
+                                ),
+                            ),
+                        ),
+                    ),
+                    String(
+                        "multiple",
+                    ): Option(
+                        Some(
+                            Map(
+                                Map(
+                                    {
+                                        Number(
+                                            U8(
+                                                0,
+                                            ),
+                                        ): Map(
+                                            Map(
+                                                {
+                                                    Number(
+                                                        U8(
+                                                            0,
+                                                        ),
+                                                    ): Number(
+                                                        U16(
+                                                            959,
+                                                        ),
+                                                    ),
+                                                    Number(
+                                                        U8(
+                                                            1,
+                                                        ),
+                                                    ): Number(
+                                                        F32(
+                                                            F32(
+                                                                95.5,
+                                                            ),
+                                                        ),
+                                                    ),
+                                                    Number(
+                                                        U8(
+                                                            2,
+                                                        ),
+                                                    ): Option(
+                                                        Some(
+                                                            Map(
+                                                                Map(
+                                                                    {
+                                                                        Number(
+                                                                            U8(
+                                                                                0,
+                                                                            ),
+                                                                        ): String(
+                                                                            "nopenope",
+                                                                        ),
+                                                                    },
+                                                                ),
+                                                            ),
+                                                        ),
+                                                    ),
+                                                },
+                                            ),
+                                        ),
+                                    },
+                                ),
+                            ),
+                        ),
+                    ),
+                    String(
+                        "name",
+                    ): String(
+                        "MyName",
+                    ),
+                    String(
+                        "no_more",
+                    ): Option(
+                        None,
+                    ),
+                    String(
+                        "sadess",
+                    ): Number(
+                        I8(
+                            -125,
+                        ),
+                    ),
+                    String(
+                        "structed",
+                    ): Map(
+                        Map(
+                            {
+                                String(
+                                    "array",
+                                ): Seq(
+                                    [
+                                        Number(
+                                            U8(
+                                                5,
+                                            ),
+                                        ),
+                                        Number(
+                                            U8(
+                                                6,
+                                            ),
+                                        ),
+                                        Number(
+                                            U8(
+                                                7,
+                                            ),
+                                        ),
+                                        Number(
+                                            U8(
+                                                8,
+                                            ),
+                                        ),
+                                        Number(
+                                            U8(
+                                                9,
+                                            ),
+                                        ),
+                                    ],
+                                ),
+                                String(
+                                    "deep",
+                                ): Option(
+                                    Some(
+                                        Map(
+                                            Map(
+                                                {
+                                                    Number(
+                                                        U8(
+                                                            0,
+                                                        ),
+                                                    ): Map(
+                                                        Map(
+                                                            {
+                                                                Number(
+                                                                    U8(
+                                                                        0,
+                                                                    ),
+                                                                ): Map(
+                                                                    Map(
+                                                                        {
+                                                                            String(
+                                                                                "one",
+                                                                            ): Number(
+                                                                                U8(
+                                                                                    0,
+                                                                                ),
+                                                                            ),
+                                                                            String(
+                                                                                "two",
+                                                                            ): Number(
+                                                                                U8(
+                                                                                    0,
+                                                                                ),
+                                                                            ),
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                                Number(
+                                                                    U8(
+                                                                        1,
+                                                                    ),
+                                                                ): Number(
+                                                                    F64(
+                                                                        F64(
+                                                                            8.55,
+                                                                        ),
+                                                                    ),
+                                                                ),
+                                                                Number(
+                                                                    U8(
+                                                                        2,
+                                                                    ),
+                                                                ): Map(
+                                                                    Map(
+                                                                        {
+                                                                            String(
+                                                                                "one",
+                                                                            ): Number(
+                                                                                U8(
+                                                                                    0,
+                                                                                ),
+                                                                            ),
+                                                                            String(
+                                                                                "two",
+                                                                            ): Number(
+                                                                                U8(
+                                                                                    0,
+                                                                                ),
+                                                                            ),
+                                                                        },
+                                                                    ),
+                                                                ),
+                                                            },
+                                                        ),
+                                                    ),
+                                                },
+                                            ),
+                                        ),
+                                    ),
+                                ),
+                                String(
+                                    "floaty",
+                                ): Number(
+                                    F32(
+                                        F32(
+                                            10.5,
+                                        ),
+                                    ),
+                                ),
+                                String(
+                                    "inted",
+                                ): Number(
+                                    U8(
+                                        5,
+                                    ),
+                                ),
+                                String(
+                                    "tuple",
+                                ): Map(
+                                    Map(
+                                        {
+                                            Number(
+                                                U8(
+                                                    0,
+                                                ),
+                                            ): Number(
+                                                U8(
+                                                    5,
+                                                ),
+                                            ),
+                                            Number(
+                                                U8(
+                                                    1,
+                                                ),
+                                            ): Number(
+                                                U8(
+                                                    6,
+                                                ),
+                                            ),
+                                            Number(
+                                                U8(
+                                                    2,
+                                                ),
+                                            ): Number(
+                                                F32(
+                                                    F32(
+                                                        7.5,
+                                                    ),
+                                                ),
+                                            ),
+                                            Number(
+                                                U8(
+                                                    3,
+                                                ),
+                                            ): Number(
+                                                U8(
+                                                    8,
+                                                ),
+                                            ),
+                                            Number(
+                                                U8(
+                                                    4,
+                                                ),
+                                            ): String(
+                                                "Epic Asia",
+                                            ),
+                                        },
+                                    ),
+                                ),
+                            },
+                        ),
+                    ),
+                    String(
+                        "two",
+                    ): Map(
+                        Map(
+                            {
+                                Number(
+                                    U8(
+                                        0,
+                                    ),
+                                ): Number(
+                                    U8(
+                                        5,
+                                    ),
+                                ),
+                                Number(
+                                    U8(
+                                        1,
+                                    ),
+                                ): Number(
+                                    U8(
+                                        6,
+                                    ),
+                                ),
+                                Number(
+                                    U8(
+                                        2,
+                                    ),
+                                ): Number(
+                                    F64(
+                                        F64(
+                                            5.7,
+                                        ),
+                                    ),
+                                ),
+                            },
+                        ),
+                    ),
+                    String(
+                        "value",
+                    ): Number(
+                        U8(
+                            105,
+                        ),
+                    ),
+                },
+            ),
+        ),
+    ],
+)
