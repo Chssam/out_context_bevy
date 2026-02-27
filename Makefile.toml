@@ -1,0 +1,48 @@
+# cargo-make
+# cargo install --force cargo-make
+# Link: https://github.com/sagiegurari/cargo-make
+# Ex: cargo make run
+
+[env]
+CARGO_MAKE_EXTEND_WORKSPACE_MAKEFILE = true
+
+[config]
+default_to_workspace = false
+
+
+# Debug runner
+[tasks.run]
+command = "cargo"
+args = ["run", "--bin", "reflection_fun"]
+
+# Build debug exe
+[tasks.build]
+command = "cargo"
+args = ["build", "--bin", "reflection_fun"]
+
+# Release runner
+[tasks.release]
+command = "cargo"
+args = ["run", "--release", "--bin", "reflection_fun"]
+
+# Build release exe
+[tasks.build_release]
+command = "cargo"
+args = ["run", "--release", "--bin", "reflection_fun"]
+
+
+# Backup Commands
+[tasks.clean_backup]
+script = "rmdir /s /q backups"
+
+[tasks.new_backup]
+script = "mkdir backups"
+
+[tasks.backup_cargo]
+script = "copy Cargo.toml backups\\"
+
+[tasks.backup_reflection_fun]
+script = "xcopy reflection_fun backups\\reflection_fun\\ /s /q"
+
+[tasks.backup]
+dependencies = ["new_backup", "backup_cargo", "backup_reflection_fun"]
