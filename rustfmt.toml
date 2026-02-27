@@ -1,0 +1,4 @@
+hard_tabs = true
+match_arm_leading_pipes = "Preserve"
+match_block_trailing_comma = false
+max_width = 100
