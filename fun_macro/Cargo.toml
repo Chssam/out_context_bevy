@@ -1,0 +1,21 @@
+[package]
+name = "fun_macro"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+rust-version.workspace = true
+publish = false
+
+
+[dependencies]
+bevy_reflect.workspace = true
+bevy_ecs.workspace = true
+bevy_app.workspace = true
+bevy_utils.workspace = true
+bevy_ptr.workspace = true
+bevy_derive.workspace = true
+bevy_platform.workspace = true
+
+[lints]
+workspace = true
