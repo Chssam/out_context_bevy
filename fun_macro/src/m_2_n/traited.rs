@@ -56,15 +56,17 @@ impl<T: Many2Many, U: Many2Many> Command for ShareMod<T, U> {
 		{
 			let mut mod_notif = world.get::<T>(self.moder).cloned().unwrap_or_default().entity_set();
 
-			mod_notif.insert(self.entity);
-			world.commands().entity(self.moder).insert(T::new_self(mod_notif));
+			if mod_notif.insert(self.entity) {
+				world.commands().entity(self.moder).insert(T::new_self(mod_notif));
+			}
 		}
 
 		{
 			let mut get_notif = world.get::<U>(self.entity).cloned().unwrap_or_default().entity_set();
 
-			get_notif.insert(self.moder);
-			world.commands().entity(self.entity).insert(U::new_self(get_notif));
+			if get_notif.insert(self.moder) {
+				world.commands().entity(self.entity).insert(U::new_self(get_notif));
+			}
 		}
 	}
 }
@@ -90,8 +92,10 @@ impl<T: Many2Many, U: Many2Many> RemoveMod<T, U> {
 impl<T: Many2Many, U: Many2Many> Command for RemoveMod<T, U> {
 	fn apply(self, world: &mut World) {
 		if let Some(mut mod_notif) = world.get::<T>(self.moder).cloned().map(|v| v.entity_set()) {
-			mod_notif.remove(&self.entity);
-			if let Ok(mut ent_cmd) = world.commands().get_entity(self.moder) {
+			let is_exist = mod_notif.remove(&self.entity);
+			if let Ok(mut ent_cmd) = world.commands().get_entity(self.moder)
+				&& is_exist
+			{
 				if mod_notif.is_empty() {
 					ent_cmd.remove::<T>();
 				} else {
@@ -101,9 +105,10 @@ impl<T: Many2Many, U: Many2Many> Command for RemoveMod<T, U> {
 		}
 
 		if let Some(mut get_notif) = world.get::<U>(self.entity).cloned().map(|v| v.entity_set()) {
-			get_notif.remove(&self.moder);
-
-			if let Ok(mut ent_cmd) = world.commands().get_entity(self.entity) {
+			let is_exist = get_notif.remove(&self.moder);
+			if let Ok(mut ent_cmd) = world.commands().get_entity(self.entity)
+				&& is_exist
+			{
 				if get_notif.is_empty() {
 					ent_cmd.remove::<U>();
 				} else {
