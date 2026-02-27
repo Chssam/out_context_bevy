@@ -1,2 +1,6 @@
 # out_context_bevy
-Useful or unuseful, use it as reference or fun. Unintended to be release in crate.io
+Useful or unuseful, use it as reference or fun.
+
+Unintended to be release in crate.io
+
+Broken/Weird way to get around.
