@@ -7,10 +7,11 @@ license.workspace = true
 rust-version.workspace = true
 publish = false
 
-[lib]
-proc-macro = true
 
 [dependencies]
+fun_macro.workspace = true
+fun_proc_macro.workspace = true
+
 bevy_reflect.workspace = true
 bevy_ecs.workspace = true
 bevy_app.workspace = true
