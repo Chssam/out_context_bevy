@@ -41,8 +41,20 @@ script = "mkdir backups"
 [tasks.backup_cargo]
 script = "copy Cargo.toml backups\\"
 
-[tasks.backup_reflection_fun]
-script = "xcopy reflection_fun backups\\reflection_fun\\ /s /q"
+[tasks.backup_fun]
+script = "xcopy fun backups\\fun\\ /s /q"
+
+[tasks.backup_macro_fun]
+script = "xcopy fun_macro backups\\fun_macro\\ /s /q"
+
+[tasks.backup_macro_proc_fun]
+script = "xcopy fun_proc_macro backups\\fun_proc_macro\\ /s /q"
 
 [tasks.backup]
-dependencies = ["new_backup", "backup_cargo", "backup_reflection_fun"]
+dependencies = [
+    "new_backup",
+    "backup_cargo",
+    "backup_macro_fun",
+    "backup_macro_proc_fun",
+    "backup_fun",
+]
