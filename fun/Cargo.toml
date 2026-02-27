@@ -1,0 +1,30 @@
+[package]
+name = "reflection_fun"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+rust-version.workspace = true
+publish = false
+
+[lib]
+proc-macro = true
+
+[dependencies]
+bevy_reflect.workspace = true
+bevy_ecs.workspace = true
+bevy_app.workspace = true
+bevy_utils.workspace = true
+bevy_ptr.workspace = true
+bevy_derive.workspace = true
+bevy_platform.workspace = true
+bevy_log.workspace = true
+bevy_math.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+ron.workspace = true
+bincode.workspace = true
+smol_str.workspace = true
+
+[lints]
+workspace = true

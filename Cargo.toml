@@ -1,0 +1,71 @@
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+authors = ["Chssam"]
+license = "Apache-2.0 OR MIT"
+rust-version = "1.87"
+publish = false
+
+[workspace]
+resolver = "2"
+members = ["fun", "fun_macro", "fun_proc_macro"]
+default-members = ["fun"]
+
+#   ----------------------------------------------------------------------
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+opt-level = 3
+incremental = false
+debug = false
+
+#   ----------------------------------------------------------------------
+
+[workspace.dependencies]
+fun_macro = { path = "./fun_macro" }
+fun_proc_macro = { path = "./fun_proc_macro" }
+
+bevy_reflect = { version = "0.18", features = [
+    "reflect_documentation",
+    "glam",
+    "hashbrown",
+    "petgraph",
+    "smol_str",
+] }
+bevy_ecs = { version = "0.18", features = [
+    "multi_threaded",
+    "reflect_functions",
+    "serialize",
+    "debug",
+] }
+bevy_app = { version = "0.18", features = [
+    "reflect_functions",
+    "reflect_auto_register",
+] }
+bevy_utils = { version = "0.18", features = ["debug"] }
+
+bevy_ptr = "0.18"
+bevy_derive = "0.18"
+bevy_platform = "0.18"
+bevy_log = "0.18"
+bevy_math = "0.18"
+serde = "1.0"
+serde_json = "1.0"
+ron = "0.12"
+bincode = { version = "2.0", features = ["serde"] } # Follow Bevy
+smol_str = "0.2"                                    # Follow Bevy
+
+#   ----------------------------------------------------------------------
+
+[workspace.lints.clippy]
+type_complexity = "warn"
+deprecated_semver = "deny"
+redundant_clone = "deny"
