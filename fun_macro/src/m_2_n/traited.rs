@@ -7,17 +7,17 @@ use bevy_ecs::{
 	world::World,
 };
 
-pub trait OutputEntity: Component + Default + Clone {
+pub trait Many2Many: Component + Default + Clone {
 	fn new_self(entity_set: EntityHashSet) -> Self;
 	fn entity_set(self) -> EntityHashSet;
 }
 
-pub trait Many2Many {
+pub trait EntityCommandM2N {
 	fn add_mod<T: ModExtent>(&mut self, child: Entity);
 	fn remove_mod<T: ModExtent>(&mut self, child: Entity);
 }
 
-impl<'a> Many2Many for EntityCommands<'a> {
+impl<'a> EntityCommandM2N for EntityCommands<'a> {
 	fn add_mod<T: ModExtent>(&mut self, child: Entity) {
 		let ent = self.id();
 		T::add_it(self.commands_mut(), ent, child);
@@ -33,14 +33,14 @@ pub trait ModExtent {
 	fn remove_it(cmd: &mut Commands, ent_1: Entity, ent_2: Entity);
 }
 
-pub struct ShareMod<T: OutputEntity, U: OutputEntity> {
+pub struct ShareMod<T: Many2Many, U: Many2Many> {
 	type_moder: PhantomData<T>,
 	type_entity: PhantomData<U>,
 	moder: Entity,
 	entity: Entity,
 }
 
-impl<T: OutputEntity, U: OutputEntity> ShareMod<T, U> {
+impl<T: Many2Many, U: Many2Many> ShareMod<T, U> {
 	pub fn new(moder: Entity, entity: Entity) -> Self {
 		Self {
 			type_moder: PhantomData::default(),
@@ -51,7 +51,7 @@ impl<T: OutputEntity, U: OutputEntity> ShareMod<T, U> {
 	}
 }
 
-impl<T: OutputEntity, U: OutputEntity> Command for ShareMod<T, U> {
+impl<T: Many2Many, U: Many2Many> Command for ShareMod<T, U> {
 	fn apply(self, world: &mut World) {
 		{
 			let mut mod_notif = world.get::<T>(self.moder).cloned().unwrap_or_default().entity_set();
@@ -69,14 +69,14 @@ impl<T: OutputEntity, U: OutputEntity> Command for ShareMod<T, U> {
 	}
 }
 
-pub struct RemoveMod<T: OutputEntity, U: OutputEntity> {
+pub struct RemoveMod<T: Many2Many, U: Many2Many> {
 	type_moder: PhantomData<T>,
 	type_entity: PhantomData<U>,
 	moder: Entity,
 	entity: Entity,
 }
 
-impl<T: OutputEntity, U: OutputEntity> RemoveMod<T, U> {
+impl<T: Many2Many, U: Many2Many> RemoveMod<T, U> {
 	pub fn new(moder: Entity, entity: Entity) -> Self {
 		Self {
 			type_moder: PhantomData::default(),
@@ -87,7 +87,7 @@ impl<T: OutputEntity, U: OutputEntity> RemoveMod<T, U> {
 	}
 }
 
-impl<T: OutputEntity, U: OutputEntity> Command for RemoveMod<T, U> {
+impl<T: Many2Many, U: Many2Many> Command for RemoveMod<T, U> {
 	fn apply(self, world: &mut World) {
 		if let Some(mut mod_notif) = world.get::<T>(self.moder).cloned().map(|v| v.entity_set()) {
 			mod_notif.remove(&self.entity);
